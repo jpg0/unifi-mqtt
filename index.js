@@ -5,7 +5,7 @@ const MQTT_TOPIC = "unifi"
 const argv = require('yargs')
     .usage('Usage: $0 --mqtt [mqtt url] --unifi-host [host] --unifi-user [username] --unifi-password [password] [--retain [true/false]]')
     .demandOption(['mqtt', 'unifi-host', 'unifi-user', 'unifi-password'])
-    .env("UNIFI_MQTT")
+    .env(true)
     .argv;
 
 let retain_flag = (argv.retain === "true") ? true:false;

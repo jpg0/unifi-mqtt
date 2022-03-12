@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  unifi-mqtt:
+    image: unifi-mqtt
+    container_name: unifi-mqtt
+    environment:
+      - MQTT=mqtt://192.168.2.10
+      - UNIFI_HOST=192.168.2.1
+      - UNIFI_USER=unifi2mqtt
+      - UNIFI_PASSWORD=${PASSWORD?err}
+    restart: unless-stopped
