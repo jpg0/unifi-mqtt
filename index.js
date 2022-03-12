@@ -8,8 +8,6 @@ const argv = require('yargs')
     .env(true)
     .argv;
 
-console.log(argv);
-
 let retain_flag = (argv.retain === "true") ? true:false;
 
 const mqtt_url = argv.mqtt;
