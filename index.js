@@ -4,9 +4,11 @@ const MQTT_TOPIC = "unifi"
 
 const argv = require('yargs')
     .usage('Usage: $0 --mqtt [mqtt url] --unifi-host [host] --unifi-user [username] --unifi-password [password] [--retain [true/false]]')
-    .demandOption(['mqtt', 'unifi-host', 'unifi-user', 'unifi-password'])
+    .demandOption(['mqtt', 'unifiHost', 'unifiUser', 'unifiPassword'])
     .env(true)
     .argv;
+
+console.log(argv);
 
 let retain_flag = (argv.retain === "true") ? true:false;
 
@@ -29,10 +31,10 @@ const mqtt = require('mqtt')
 const Unifi = require('unifi-events')
 
 const unifi = new Unifi({
-  host: argv['unifi-host'],                        // The hostname or ip address of the unifi controller (default: 'unifi')
+  host: argv.unifiHost,                        // The hostname or ip address of the unifi controller (default: 'unifi')
   port: 443,                           // Port of the unifi controller (default: 8443)
-  username: argv['unifi-user'],                    // Username (default: 'admin').
-  password: argv['unifi-password'],                     // Password (default: 'ubnt').
+  username: argv.unifiUser,                    // Username (default: 'admin').
+  password: argv.unifiPassword,                     // Password (default: 'ubnt').
   site: 'default',                      // The UniFi site to connect to (default: 'default').
   insecure: true,                        // Allow connections if SSL certificate check fails (default: false).
   unifios: true  
